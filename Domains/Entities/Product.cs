@@ -1,12 +1,15 @@
 using System.Security.AccessControl;
 using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Domains.Models
+namespace Domains.Entities
 {
     public class Product
     {
 
+        [Key] // primary key
         public int Id { get; set; }
+        [MaxLength(30),Required] // character (30) // not null
         public string ProductName { get; set; }
         public decimal Price { get; set; }
         public int ProductCount { get; set; }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Services.Services.MessageSender;
 using softClub.Models;
 
 namespace softClub.Controllers
@@ -12,48 +13,31 @@ namespace softClub.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger; // field
-
-        public HomeController(ILogger<HomeController> logger) // constructor
+        private readonly IMessageSender _messageSender;
+        private int a;
+        public HomeController(ILogger<HomeController> logger,
+            IMessageSender messageSender) // constructor
         {
             _logger = logger;
+            _messageSender = messageSender;
+            
         }
 
         public IActionResult Index() // acrtion  // method
         {
-            return View();
+            _logger.LogInformation("hello");
+            var id = _messageSender.GetId();
+            return View(id);
         }
 
+      
 
         public IActionResult Privacy()
         {
             return View();
         }
 
-        // public IActionResult Add([FromQuery] int a, int b)
-        // {
-
-        //     return Json(a + b);
-
-        //     // Ok
-        //     //Json
-        //     //View
-        //     //Erro
-        // }
-
-
-        // public IActionResult Subtract([FromQuery] int a, int b)
-        // {
-        //     return Json(a - b);
-        // }
-        // public IActionResult Multiply([FromQuery] int a, int b)
-        // {
-        //     return Json(a - b);
-        // }
-
-        // public IActionResult Divide([FromQuery] int a, int b)
-        // {
-        //     return Json(a - b);
-        // }
+        
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
