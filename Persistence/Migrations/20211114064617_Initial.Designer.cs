@@ -9,7 +9,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SoftClubContext))]
-    [Migration("20211112161732_Initial")]
+    [Migration("20211114064617_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

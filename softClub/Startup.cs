@@ -42,8 +42,7 @@ namespace softClub
             string connection = Configuration.GetConnectionString("DefaultConnection");
             // добавляем контекст MobileContext в качестве сервиса в приложение
             services.AddDbContext<SoftClubContext>(options =>
-                options.UseNpgsql(connection)); 
-            
+                options.UseNpgsql(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
